@@ -69,12 +69,30 @@ const readMin = (src) => Math.max(1, Math.round(src.replace(/\s/g, "").length / 
 const fmtDate = (d) => d.replace(/-/g, ".");
 
 // ---------- 데이터 정리 ----------
+// 추가 본문은 각 글의 마지막 문단(맺음말) 바로 앞에 끼워 넣는다
+const EXTRA = require("./content/extra.js");
+function withExtra(p) {
+  const ex = EXTRA[p.slug];
+  if (!ex) return p.body;
+  const blocks = p.body.trim().split(/\n\s*\n/);
+  const last = blocks.pop();
+  return [...blocks, ex.trim(), last].join("\n\n");
+}
+
 const all = [];
 for (const c of CATS) {
-  c.posts.sort((a, b) => b.date.localeCompare(a.date));
-  for (const p of c.posts) all.push({ ...p, cat: c, url: `/posts/${p.slug}.html`, min: readMin(p.body) });
+  for (const p of c.posts) all.push({ ...p, body: withExtra(p), cat: c, url: `/posts/${p.slug}.html` });
 }
-all.sort((a, b) => b.date.localeCompare(a.date));
+// 발행일: 하루에 한 편씩, 마지막 글이 SITE.updated(오늘)가 되도록 거꾸로 배정
+all.sort((a, b) => a.date.localeCompare(b.date) || a.slug.localeCompare(b.slug));
+const lastDay = new Date(SITE.updated + "T00:00:00Z");
+all.forEach((p, i) => {
+  const d = new Date(lastDay);
+  d.setUTCDate(d.getUTCDate() - (all.length - 1 - i));
+  p.date = d.toISOString().slice(0, 10);
+  p.min = readMin(p.body);
+});
+all.reverse(); // 최신순
 const slugs = new Set();
 for (const p of all) {
   if (slugs.has(p.slug)) throw new Error("slug 중복: " + p.slug);
@@ -181,8 +199,8 @@ function write(rel, content) {
 }
 
 // ---------- 초기화 ----------
-fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
+for (const f of fs.readdirSync(OUT)) fs.rmSync(path.join(OUT, f), { recursive: true, force: true });
 fs.cpSync(path.join(__dirname, "assets"), path.join(OUT, "assets"), { recursive: true });
 
 // ---------- 홈 ----------
