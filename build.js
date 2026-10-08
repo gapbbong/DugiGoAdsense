@@ -70,13 +70,13 @@ const fmtDate = (d) => d.replace(/-/g, ".");
 
 // ---------- 데이터 정리 ----------
 // 추가 본문은 각 글의 마지막 문단(맺음말) 바로 앞에 끼워 넣는다
-const EXTRA = require("./content/extra.js");
+const EXTRAS = [require("./content/extra.js"), require("./content/extra2.js")];
 function withExtra(p) {
-  const ex = EXTRA[p.slug];
-  if (!ex) return p.body;
+  const adds = EXTRAS.map((e) => e[p.slug]).filter(Boolean);
+  if (!adds.length) return p.body;
   const blocks = p.body.trim().split(/\n\s*\n/);
   const last = blocks.pop();
-  return [...blocks, ex.trim(), last].join("\n\n");
+  return [...blocks, ...adds.map((a) => a.trim()), last].join("\n\n");
 }
 
 const all = [];
