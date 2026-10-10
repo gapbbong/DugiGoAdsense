@@ -8,7 +8,7 @@ const SITE = {
   // 실제 도메인이 정해지면 SITE_URL 환경변수로 넣으세요. 예) SITE_URL=https://dugigo.example node build.js
   url: (process.env.SITE_URL || "https://www.creat1324.com").replace(/\/$/, ""),
   email: process.env.SITE_EMAIL || "gapbbong@gmail.com",
-  adsenseClient: process.env.ADSENSE_CLIENT || "", // 예) ca-pub-0000000000000000 (승인 후 입력)
+  adsenseClient: process.env.ADSENSE_CLIENT || "ca-pub-4428080843496647", // 사이트 소유 확인과 ads.txt에 쓰인다
   appUrl: process.env.APP_URL || "", // 두기고 문제풀이 앱 주소가 있으면 입력
   updated: "2026-10-08",
 };
