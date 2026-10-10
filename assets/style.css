@@ -322,6 +322,38 @@ img, svg { max-width: 100%; }
 @media (max-width: 860px) {
   .cats, .grid { grid-template-columns: 1fr 1fr; }
 }
+/* 도표와 기출 데이터 상자 */
+.fig { margin: 1.8em 0; }
+.fig svg { display: block; width: 100%; height: auto; max-width: 640px; margin: 0 auto; }
+.fig figcaption { margin-top: 8px; font-size: 14px; color: var(--muted); text-align: center; line-height: 1.6; }
+.fig .f-text { fill: var(--ink); font-size: 14px; }
+.fig .f-small { fill: var(--muted); font-size: 12.5px; }
+.fig .f-tiny { fill: var(--muted); font-size: 11.5px; }
+.fig .f-strong { font-weight: 700; }
+.fig .f-on { fill: #fff; font-weight: 700; }
+.fig .f-bar { fill: var(--c, #4f46e5); }
+.fig .f-track { fill: var(--soft); }
+.fig .f-box { fill: var(--surface); stroke: var(--ink); stroke-width: 1.5; }
+.fig .f-warn { stroke: #e11d48; }
+.fig .f-line { stroke: var(--ink); stroke-width: 2; fill: none; }
+.fig .f-dash { stroke-dasharray: 5 4; }
+.fig .f-rail { stroke: var(--muted); stroke-width: 3; }
+.data-box { margin: 2.4em 0; padding: 22px 20px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); box-shadow: var(--shadow); }
+.data-box h2 { margin-top: 0; }
+.data-box h3 { font-size: 17px; margin: 1.6em 0 0.6em; }
+.data-box p { margin: 0 0 1em; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; padding: 0; margin: 0 0 1.2em; }
+.chips li { flex: 1 1 150px; background: var(--soft); border-radius: 12px; padding: 12px 14px; margin: 0; }
+.chips li::marker { content: ""; }
+.chips b { display: block; font-size: 24px; line-height: 1.3; color: var(--c, var(--ink)); }
+.chips span { font-size: 13px; color: var(--muted); }
+.data-box table, table.grade { width: 100%; border-collapse: collapse; font-size: 15px; margin: 0 0 1em; }
+.data-box th, .data-box td, table.grade th, table.grade td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+.data-box th, table.grade th { background: var(--soft); font-weight: 700; }
+table.grade td:first-child { font-weight: 700; text-align: center; }
+.data-box td:first-child { white-space: nowrap; }
+.method { font-size: 13px !important; color: var(--muted); margin-bottom: 0 !important; }
+
 @media (max-width: 680px) {
   .cats, .grid, .foot, .pager { grid-template-columns: 1fr; }
   .icon-btn.menu { display: inline-block; }

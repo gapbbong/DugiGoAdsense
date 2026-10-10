@@ -97,6 +97,71 @@ function renderVisualCard(p) {
   </div>`;
 }
 
+// ---------- 도표와 기출 데이터 상자 ----------
+const FIG = require("./content/figures.js");
+const STATS = require("./content/data_stats.json").subjects;
+const NOTES = require("./content/data_notes.js");
+const fmtN = (n) => n.toLocaleString("ko-KR");
+
+function gradeTableHtml() {
+  return `<table class="grade"><thead><tr><th>구분</th><th>점수</th><th>급수</th></tr></thead><tbody>
+<tr><td rowspan="3">심화</td><td>80점 이상</td><td>1급</td></tr><tr><td>70~79점</td><td>2급</td></tr><tr><td>60~69점</td><td>3급</td></tr>
+<tr><td rowspan="3">기본</td><td>80점 이상</td><td>4급</td></tr><tr><td>70~79점</td><td>5급</td></tr><tr><td>60~69점</td><td>6급</td></tr></tbody></table>`;
+}
+function renderFigure(f) {
+  const inner = f.html === "gradeTable" ? gradeTableHtml() : FIG[f.fn](...(f.args || []));
+  return `<figure class="fig">${inner}<figcaption>${esc(f.caption)}</figcaption></figure>`;
+}
+const METHOD_NOTE = "집계 방법: 두기고에 수록된 문제의 문장이 같으면 같은 문제로 세었어요. 보기나 숫자가 바뀐 문제, 그림에만 내용이 있는 문제는 따로 세지 못해서 실제 반복은 이보다 많을 수 있어요. 수록 회차는 두기고가 가진 기출만 센 것이라 전체 시험 횟수와 다를 수 있어요.";
+
+function dataSection(slug) {
+  const n = NOTES[slug], s = STATS[slug];
+  if (!n || !s) return "";
+  const chips = [];
+  if (n.chips.includes("unique")) {
+    const approx = slug === "preview-automation-technician";
+    chips.push([approx ? "약 " + fmtN(Math.round(s.unique / 10) * 10) : fmtN(s.unique), "서로 다른 기출 문제"]);
+  }
+  if (n.chips.includes("rounds")) chips.push([`${s.rounds}회차`, s.years && s.years[0] !== s.years[1] ? `수록 회차 (${s.years[0]}~${s.years[1]})` : "수록 회차"]);
+  if (n.chips.includes("repeat")) chips.push([`${s.repeatedShare}%`, "두 회차 이상 반복된 문제"]);
+  let h = `<section class="data-box" aria-label="두기고 기출 데이터"><h2>두기고 기출 데이터로 본 ${esc(s.folder)}</h2>`;
+  if (chips.length) h += `<ul class="chips">${chips.map(([v, l]) => `<li><b>${esc(v)}</b><span>${esc(l)}</span></li>`).join("")}</ul>`;
+  h += `<p>${esc(n.note)}</p>`;
+  if (n.bars) {
+    const items = s.units.map((u) => ({ label: u.name.replace(/^\d+과목_/, ""), value: u.unique }));
+    h += `<figure class="fig">${FIG.barChart(items, s.folder + " 단원별 수록 문제 수")}<figcaption>두기고에 수록된 서로 다른 문제를 단원별로 센 값이에요. 시험에 나오는 비중이 아니라 수록된 문제 수라서, 단원마다 연습할 수 있는 양을 가늠하는 용도로 보세요.</figcaption></figure>`;
+  }
+  if (n.top && s.top && s.top.length) {
+    h += `<h3>여러 회차에 다시 나온 문제</h3><table class="top"><thead><tr><th>나온 회차</th><th>문제 (앞부분)</th></tr></thead><tbody>${s.top
+      .slice(0, 5)
+      .map((t) => `<tr><td>${t.rounds}회차</td><td>${esc(t.text.split("*").join("").trim())}${t.text.length >= 38 ? "…" : ""}</td></tr>`)
+      .join("")}</tbody></table>`;
+  }
+  h += `<p class="method">${esc(METHOD_NOTE)}</p></section>`;
+  return h;
+}
+function compareSection(slug) {
+  if (slug !== "why-past-exams-first") return "";
+  const rows = [
+    ["preview-electric-technician", "전기기능사"],
+    ["preview-electric-construction", "전기공사산업기사"],
+    ["preview-automation-industrial", "자동화설비산업기사"],
+    ["preview-electric-engineer", "전기기사"],
+    ["preview-elevator", "승강기기능사"],
+  ].map(([k, l]) => ({ label: l, value: STATS[k].repeatedShare })).sort((a, b) => b.value - a.value);
+  return `<section class="data-box" aria-label="종목별 기출 반복 비율"><h2>두기고 기출 데이터로 비교해 본 반복 비율</h2>
+<p>기출을 먼저 풀라는 말이 모든 시험에 똑같이 맞는 건 아니에요. 두기고에 수록된 기출에서 같은 문장의 문제가 두 회차 이상 나온 비율을 종목마다 세어 봤어요. 가장 높은 전기기능사는 ${rows[0].value}%, 가장 낮은 승강기기능사는 ${rows[rows.length - 1].value}%였어요.</p>
+<figure class="fig">${FIG.barChart(rows, "종목별 기출 반복 비율 비교", (v) => v + "%")}<figcaption>두 회차 이상 같은 문장으로 다시 나온 문제의 비율(두기고 수록 기출 기준)</figcaption></figure>
+<p>반복이 많은 시험은 기출을 풀수록 같은 문제를 다시 만날 확률이 높아요. 반복이 적은 시험은 기출을 외우는 용도가 아니라 어떤 개념을 묻는지 익히는 용도로 써야 해요.</p>
+<p class="method">${esc(METHOD_NOTE)}</p></section>`;
+}
+function renderPostBody(p) {
+  const blocks = p.body.trim().split(/\n\s*\n/);
+  const first = blocks.shift();
+  const figs = ((NOTES[p.slug] || {}).figures || []).map(renderFigure).join("");
+  return renderBody(first) + figs + (blocks.length ? renderBody(blocks.join("\n\n")) : "") + dataSection(p.slug) + compareSection(p.slug);
+}
+
 function renderExamSamples(slug) {
   const samples = EXAM_SAMPLES[slug];
   if (!samples || !samples.length) return "";
@@ -384,7 +449,7 @@ for (const p of all) {
   <div class="wrap narrow prose">
     ${renderVisualCard(p)}
     ${p.cat.note ? `<p class="note">${esc(p.cat.note)}</p>` : ""}
-    ${renderBody(p.body)}
+    ${renderPostBody(p)}
     ${renderExamSamples(p.slug)}
     <p class="disclaimer">시험 일정, 응시 자격, 합격 기준은 해마다 바뀔 수 있어요. 접수 전에 큐넷(Q-Net) 또는 시행기관의 공식 공고를 꼭 확인하세요.</p>
   </div>

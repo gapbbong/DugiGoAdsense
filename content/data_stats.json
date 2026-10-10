@@ -1,0 +1,605 @@
+{
+ "generatedFrom": "두기고 기출 데이터",
+ "subjects": {
+  "preview-electric-technician": {
+   "folder": "전기기능사",
+   "entries": 1602,
+   "unique": 1315,
+   "rounds": 28,
+   "years": [
+    2015,
+    2022
+   ],
+   "repeatedUnique": 160,
+   "repeatedShare": 12.2,
+   "avgAppear": 1.22,
+   "top": [
+    {
+     "text": "보호를 요하는 회로의 전류가 어떤 일정한 값(정정값) 이상으로 흘렀을",
+     "rounds": 9
+    },
+    {
+     "text": "굵은 전선이나 케이블을 절단할 때 사용되는 공구는?",
+     "rounds": 7
+    },
+    {
+     "text": "도체계에서 임의의 도체를 일정 전위(일반적으로 영전위)의 도체로 완전",
+     "rounds": 7
+    },
+    {
+     "text": "콘덴서의 정전 용량을 크게 하는 방법으로 옳지 않은 것은?",
+     "rounds": 6
+    },
+    {
+     "text": "동기 발전기의 병렬 운전 중 기전력의 위상차가 발생하면 어떤 현상이 ",
+     "rounds": 6
+    }
+   ],
+   "units": [
+    {
+     "name": "전기이론",
+     "entries": 801,
+     "unique": 672
+    },
+    {
+     "name": "전기기기",
+     "entries": 177,
+     "unique": 146
+    },
+    {
+     "name": "전기설비",
+     "entries": 624,
+     "unique": 513
+    }
+   ]
+  },
+  "preview-electric-engineer": {
+   "folder": "전기기사",
+   "entries": 1482,
+   "unique": 1372,
+   "rounds": 15,
+   "years": [
+    "2021",
+    "2025"
+   ],
+   "repeatedUnique": 96,
+   "repeatedShare": 7,
+   "avgAppear": 1.08,
+   "top": [
+    {
+     "text": "모선보호에 사용되는 계전방식이 아닌 것은?",
+     "rounds": 4
+    },
+    {
+     "text": "전력계통의 주회로에 사용되는 것으로 고장전류와 같은 대전류를 차단할 ",
+     "rounds": 3
+    },
+    {
+     "text": "10[kW], 3상 380[V] 유도전동기의 전부하 전류는 약 몇 [",
+     "rounds": 3
+    },
+    {
+     "text": "5[kVA], 3,000/200[V]의 변압기의 단락시험에서 임피던스",
+     "rounds": 3
+    },
+    {
+     "text": "전력계통에서 내부 이상전압의 크기가 가장 큰 경우는?",
+     "rounds": 3
+    }
+   ],
+   "units": [
+    {
+     "name": "전기자기학",
+     "entries": 300,
+     "unique": 290
+    },
+    {
+     "name": "전력공학",
+     "entries": 165,
+     "unique": 151
+    },
+    {
+     "name": "전기기기",
+     "entries": 248,
+     "unique": 223
+    },
+    {
+     "name": "회로이론 및 제어공학",
+     "entries": 316,
+     "unique": 296
+    },
+    {
+     "name": "전기설비기술기준",
+     "entries": 453,
+     "unique": 415
+    }
+   ]
+  },
+  "preview-infoprocess-technician": {
+   "folder": "정보처리기능사",
+   "entries": 300,
+   "unique": 299,
+   "rounds": 5,
+   "years": [
+    2026,
+    "2026"
+   ],
+   "repeatedUnique": 0,
+   "repeatedShare": 0,
+   "avgAppear": 1,
+   "top": [],
+   "units": [
+    {
+     "name": "소프트웨어 개발 기초",
+     "entries": 30,
+     "unique": 30
+    },
+    {
+     "name": "프로그래밍 언어 활용",
+     "entries": 53,
+     "unique": 53
+    },
+    {
+     "name": "데이터베이스 활용",
+     "entries": 83,
+     "unique": 83
+    },
+    {
+     "name": "운영체제 및 네트워크 기초",
+     "entries": 40,
+     "unique": 40
+    },
+    {
+     "name": "애플리케이션 테스트 관리",
+     "entries": 94,
+     "unique": 93
+    }
+   ]
+  },
+  "preview-infoprocess-industrial": {
+   "folder": "정보처리산업기사",
+   "entries": 152,
+   "unique": 140,
+   "rounds": 1,
+   "years": [
+    2026,
+    2026
+   ],
+   "repeatedUnique": null,
+   "repeatedShare": null,
+   "avgAppear": 1.09,
+   "top": [],
+   "units": [
+    {
+     "name": "애플리케이션 테스트 수행",
+     "entries": 15,
+     "unique": 15
+    },
+    {
+     "name": "응용SW 기초 기술 활용",
+     "entries": 46,
+     "unique": 46
+    },
+    {
+     "name": "프로그래밍 언어 응용",
+     "entries": 27,
+     "unique": 27
+    },
+    {
+     "name": "프로그래밍 언어 활용",
+     "entries": 64,
+     "unique": 58
+    }
+   ]
+  },
+  "preview-computer-skills-2": {
+   "folder": "컴퓨터활용능력 2급",
+   "entries": 630,
+   "unique": 591,
+   "rounds": 38,
+   "years": null,
+   "repeatedUnique": 38,
+   "repeatedShare": 6.4,
+   "avgAppear": 1.07,
+   "top": [
+    {
+     "text": "다음 중 '페이지 나누기'에 대한 설명으로 옳지 않은 것은?",
+     "rounds": 2
+    },
+    {
+     "text": "다음 중 프로그램이 실행될 때 발생하는 메인 메모리 부족 문제를 보완",
+     "rounds": 2
+    },
+    {
+     "text": "다음 중 컴퓨터에서 사용되는 바이트(Byte)에 대한 설명으로 옳지 ",
+     "rounds": 2
+    },
+    {
+     "text": "다음 중 원본 데이터를 지정된 서식으로 설정하였을 때 결과가 옳지 않",
+     "rounds": 2
+    },
+    {
+     "text": "다음 중 아래 워크시트에서 '부산' 대리점의 판매수량의 합계를 [D1",
+     "rounds": 2
+    }
+   ],
+   "units": [
+    {
+     "name": "컴퓨터 일반",
+     "entries": 318,
+     "unique": 306
+    },
+    {
+     "name": "스프레드시트 일반",
+     "entries": 312,
+     "unique": 294
+    }
+   ]
+  },
+  "preview-korean-history": {
+   "folder": "한국사검정시험",
+   "entries": 717,
+   "unique": 494,
+   "rounds": 14,
+   "years": [
+    2024,
+    2024
+   ],
+   "repeatedUnique": 97,
+   "repeatedShare": 19.6,
+   "avgAppear": 1.45,
+   "top": [
+    {
+     "text": "(가) 인물에 대한 설명으로 옳은 것은? [2점]",
+     "rounds": 9
+    },
+    {
+     "text": "(가), (나) 사이의 시기에 있었던 사실로 옳은 것은? [2점]",
+     "rounds": 8
+    },
+    {
+     "text": "(가), (나) 사이의 시기에 있었던 사실로 옳은 것은? [3점]",
+     "rounds": 8
+    },
+    {
+     "text": "(가) 단체에 대한 설명으로 옳은 것은? [2점]",
+     "rounds": 7
+    },
+    {
+     "text": "(가)에 들어갈 내용으로 가장 적절한 것은? [2점]",
+     "rounds": 6
+    }
+   ],
+   "units": [
+    {
+     "name": "선사 시대와 국가의 형성",
+     "entries": 104,
+     "unique": 83
+    },
+    {
+     "name": "삼국 시대와 남북국 시대",
+     "entries": 128,
+     "unique": 110
+    },
+    {
+     "name": "고려 시대",
+     "entries": 96,
+     "unique": 85
+    },
+    {
+     "name": "조선 시대(전기)",
+     "entries": 151,
+     "unique": 124
+    },
+    {
+     "name": "조선 시대(후기)",
+     "entries": 17,
+     "unique": 16
+    },
+    {
+     "name": "근대 사회의 전개",
+     "entries": 50,
+     "unique": 44
+    },
+    {
+     "name": "일제 강점기와 현대 사회",
+     "entries": 171,
+     "unique": 148
+    }
+   ]
+  },
+  "preview-elevator": {
+   "folder": "승강기기능사",
+   "entries": 1107,
+   "unique": 1090,
+   "rounds": 23,
+   "years": [
+    "2015",
+    "2024"
+   ],
+   "repeatedUnique": 15,
+   "repeatedShare": 1.4,
+   "avgAppear": 1.02,
+   "top": [
+    {
+     "text": "유도기전력의 크기는 코일의 권수와 코일을 관통하는 자속의 시간적인 변",
+     "rounds": 2
+    },
+    {
+     "text": "유압식 엘리베이터의 유압 파워유닛(power unit) 의 구성요소가",
+     "rounds": 2
+    },
+    {
+     "text": "유압 엘리베이터의 유압 파워유닛과 압력배관에 설치되며, 이것을 닫으면",
+     "rounds": 2
+    },
+    {
+     "text": "간접식 유압엘리베이터의 특징이 **아닌** 것은?",
+     "rounds": 2
+    },
+    {
+     "text": "다음 중 카 상부에서 하는 검사가 **아닌** 것은?",
+     "rounds": 2
+    }
+   ],
+   "units": [
+    {
+     "name": "전기이론",
+     "entries": 234,
+     "unique": 233
+    },
+    {
+     "name": "기계일반",
+     "entries": 159,
+     "unique": 159
+    },
+    {
+     "name": "승강기 점검 및 보수",
+     "entries": 198,
+     "unique": 198
+    },
+    {
+     "name": "승강기 개론",
+     "entries": 516,
+     "unique": 516
+    }
+   ]
+  },
+  "preview-automation-technician": {
+   "folder": "자동화설비(생산자동화)기능사",
+   "entries": 2084,
+   "unique": 1084,
+   "rounds": 34,
+   "years": [
+    "0000",
+    "2024"
+   ],
+   "repeatedUnique": 695,
+   "repeatedShare": 64.1,
+   "avgAppear": 1.92,
+   "top": [
+    {
+     "text": "PLC의 주요 주변기기 중에 프로그램 로더가 하는 역할과 거리가 먼 ",
+     "rounds": 8
+    },
+    {
+     "text": "전자개폐기의 철심이 진동할 경우 예상되는 원인으로 가장 가까운 것은?",
+     "rounds": 8
+    },
+    {
+     "text": "다음 그림과 같이 도면에 표시가 되었다면 b영역이 의미하는 내용으로 ",
+     "rounds": 6
+    },
+    {
+     "text": "다음 중 기계적 에너지를 유압에너지로 바꾸는 유압기기는?",
+     "rounds": 6
+    },
+    {
+     "text": "다음은 공압모터의 종류 중 하나이다. 어느 형태의 모터인가?",
+     "rounds": 6
+    }
+   ],
+   "units": [
+    {
+     "name": "기계제도 및 공유압",
+     "entries": 564,
+     "unique": 299
+    },
+    {
+     "name": "자동화 기초",
+     "entries": 319,
+     "unique": 179
+    },
+    {
+     "name": "PLC 및 제어",
+     "entries": 1201,
+     "unique": 654
+    }
+   ]
+  },
+  "preview-automation-industrial": {
+   "folder": "자동화설비산업기사",
+   "entries": 940,
+   "unique": 840,
+   "rounds": 16,
+   "years": [
+    2017,
+    2024
+   ],
+   "repeatedUnique": 76,
+   "repeatedShare": 9,
+   "avgAppear": 1.12,
+   "top": [
+    {
+     "text": "PLC의 주요 주변기기 중에 프로그램 로더가 하는 역할과 거리가 먼 ",
+     "rounds": 4
+    },
+    {
+     "text": "전자개폐기의 철심이 진동할 경우 예상되는 원인으로 가장 가까운 것은?",
+     "rounds": 4
+    },
+    {
+     "text": "상향절삭의 특징이 아닌 것은?",
+     "rounds": 3
+    },
+    {
+     "text": "다음 그림과 같이 도면에 표시가 되었다면 b영역이 의미하는 내용으로 ",
+     "rounds": 3
+    },
+    {
+     "text": "다음 중 기계적 에너지를 유압에너지로 바꾸는 유압기기는?",
+     "rounds": 3
+    }
+   ],
+   "units": [
+    {
+     "name": "1과목_기계공작법 및 기계제도",
+     "entries": 312,
+     "unique": 296
+    },
+    {
+     "name": "2과목_유공압 및 기계자동화",
+     "entries": 321,
+     "unique": 295
+    },
+    {
+     "name": "3과목_자동화시스템 및 제어공학",
+     "entries": 307,
+     "unique": 282
+    }
+   ]
+  },
+  "preview-electric-construction": {
+   "folder": "전기공사산업기사",
+   "entries": 1939,
+   "unique": 1333,
+   "rounds": 35,
+   "years": [
+    2014,
+    "2020"
+   ],
+   "repeatedUnique": 125,
+   "repeatedShare": 9.4,
+   "avgAppear": 1.45,
+   "top": [
+    {
+     "text": "가공 전선로의 지지물에 취급자가 오르고 내리는데 사용하는 발판 볼트 ",
+     "rounds": 3
+    },
+    {
+     "text": "가로조명, 도로조명 등에 사용되는 저압 나트륨등의 설명으로 틀린 것은",
+     "rounds": 2
+    },
+    {
+     "text": "가로등, 경기장, 공장, 아파트 단지 등의 일반조명을 위하여 시설하는",
+     "rounds": 2
+    },
+    {
+     "text": "목재 건조에 적합한 가열 방식은?",
+     "rounds": 2
+    },
+    {
+     "text": "엘리베이터용 전동기에 대한 설명으로 틀린 것은?",
+     "rounds": 2
+    }
+   ],
+   "units": [
+    {
+     "name": "조명 및 전열",
+     "entries": 81,
+     "unique": 61
+    },
+    {
+     "name": "전기화학 및 배터리",
+     "entries": 38,
+     "unique": 29
+    },
+    {
+     "name": "전동기 응용",
+     "entries": 89,
+     "unique": 64
+    },
+    {
+     "name": "철도설계 및 궤도",
+     "entries": 765,
+     "unique": 554
+    },
+    {
+     "name": "송전특성 및 선로정수",
+     "entries": 84,
+     "unique": 68
+    },
+    {
+     "name": "전로의 고장계산 및 중성점 접지",
+     "entries": 53,
+     "unique": 38
+    },
+    {
+     "name": "이상전압 및 보호계측",
+     "entries": 47,
+     "unique": 38
+    },
+    {
+     "name": "배전 계통 및 발전",
+     "entries": 64,
+     "unique": 49
+    },
+    {
+     "name": "직류기",
+     "entries": 87,
+     "unique": 64
+    },
+    {
+     "name": "동기기",
+     "entries": 21,
+     "unique": 13
+    },
+    {
+     "name": "변압기",
+     "entries": 118,
+     "unique": 83
+    },
+    {
+     "name": "유도기 및 정류기",
+     "entries": 95,
+     "unique": 65
+    },
+    {
+     "name": "직류회로 및 교류회로 기초",
+     "entries": 53,
+     "unique": 35
+    },
+    {
+     "name": "다상교류 및 대칭좌표법",
+     "entries": 53,
+     "unique": 39
+    },
+    {
+     "name": "회로망 정리 및 과도현상",
+     "entries": 12,
+     "unique": 9
+    },
+    {
+     "name": "전달함수 및 라플라스 변환",
+     "entries": 46,
+     "unique": 32
+    },
+    {
+     "name": "공통사항 및 접지(KEC)",
+     "entries": 116,
+     "unique": 95
+    },
+    {
+     "name": "저압_고압_특고압 전기설비(KEC)",
+     "entries": 116,
+     "unique": 95
+    },
+    {
+     "name": "전기철도 및 분산형 전원(KEC)",
+     "entries": 1,
+     "unique": 1
+    }
+   ]
+  }
+ }
+}
