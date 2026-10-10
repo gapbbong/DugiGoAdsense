@@ -6,7 +6,7 @@ const SITE = {
   name: "두기고",
   tagline: "자격증, 같이 붙자",
   // 실제 도메인이 정해지면 SITE_URL 환경변수로 넣으세요. 예) SITE_URL=https://dugigo.example node build.js
-  url: (process.env.SITE_URL || "https://dugigoadsense.vercel.app").replace(/\/$/, ""),
+  url: (process.env.SITE_URL || "https://www.creat1324.com").replace(/\/$/, ""),
   email: process.env.SITE_EMAIL || "gapbbong@gmail.com",
   adsenseClient: process.env.ADSENSE_CLIENT || "", // 예) ca-pub-0000000000000000 (승인 후 입력)
   appUrl: process.env.APP_URL || "", // 두기고 문제풀이 앱 주소가 있으면 입력
