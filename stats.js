@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 
 const CATS = [
-  { slug: "stories", name: "합격 스토리", posts: require("./content/stories.js") },
+  { slug: "stories", name: "공부 이야기", posts: require("./content/stories.js") },
   { slug: "previews", name: "시험 미리보기", posts: require("./content/previews.js") },
   { slug: "tips", name: "공부 꿀팁", posts: require("./content/tips.js") },
 ];
