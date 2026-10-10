@@ -5,6 +5,7 @@
   "description": "두기고 자격증 정보 사이트 (정적 HTML)",
   "scripts": {
     "build": "node build.js",
-    "serve": "node build.js && npx --yes serve public -l 4173"
+    "serve": "node build.js && npx --yes serve public -l 4173",
+    "stats": "node stats.js"
   }
 }

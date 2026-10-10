@@ -50,20 +50,103 @@ const OUT = path.join(__dirname, "public");
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 // ---------- 글 본문 렌더 ----------
+const EXAM_SAMPLES = require("./content/exam_samples.js");
+
 function renderBody(src) {
   const blocks = src.trim().split(/\n\s*\n/);
   let html = "";
   for (const b of blocks) {
     const lines = b.split("\n").map((l) => l.trim()).filter(Boolean);
+    if (!lines.length) continue;
+
     if (lines.length === 1 && lines[0].startsWith("## ")) {
       html += `<h2>${esc(lines[0].slice(3))}</h2>\n`;
     } else if (lines.every((l) => l.startsWith("- "))) {
       html += "<ul>" + lines.map((l) => `<li>${esc(l.slice(2))}</li>`).join("") + "</ul>\n";
+    } else if (lines[0].startsWith("> ")) {
+      const quoteText = lines.map((l) => esc(l.replace(/^>\s?/, ""))).join("<br>");
+      html += `<blockquote><p>${quoteText}</p></blockquote>\n`;
     } else {
       html += `<p>${lines.map(esc).join("<br>")}</p>\n`;
     }
   }
   return html;
+}
+
+function renderVisualCard(p) {
+  const icons = {
+    stories: "🎓",
+    previews: "📋",
+    tips: "💡"
+  };
+  const subtitles = {
+    stories: "선배들의 실전 합격 노하우와 시행착오 극복기",
+    previews: "국가기술자격 출제기준 기반 핵심 분석 & 대표 기출",
+    tips: "단기간 합격률을 끌어올리는 현실적인 학습 가이드"
+  };
+  const icon = icons[p.cat.slug] || "📘";
+  const sub = subtitles[p.cat.slug] || p.desc;
+
+  return `
+  <div class="post-visual">
+    <div class="post-visual-icon">${icon}</div>
+    <div class="post-visual-info">
+      <h3>${esc(p.title)}</h3>
+      <p>${esc(sub)}</p>
+    </div>
+  </div>`;
+}
+
+function renderExamSamples(slug) {
+  const samples = EXAM_SAMPLES[slug];
+  if (!samples || !samples.length) return "";
+
+  let out = `
+  <section class="exam-section" aria-label="대표 기출문제와 심층 해설">
+    <div class="exam-section-header">
+      <span class="exam-badge">CBT 실전 기출</span>
+      <h2>핵심 대표 문항 &amp; 상세 해설 분석</h2>
+    </div>
+    <p class="muted" style="margin: 0 0 18px; font-size: 14.5px;">실제 시험에 반복 출제되는 대표 유형입니다. 보기를 클릭하여 정답과 상세 해설을 바로 확인해보세요.</p>
+  `;
+
+  samples.forEach((item, qIdx) => {
+    out += `
+    <div class="exam-item" data-answer="${item.answer}">
+      <div class="exam-item-meta">
+        <span>문항 0${qIdx + 1}</span>
+        <span>${esc(item.unit)}</span>
+      </div>
+      <div class="exam-question">${esc(item.question)}</div>
+      <ul class="exam-options">
+    `;
+
+    item.options.forEach((opt, optIdx) => {
+      const num = optIdx + 1;
+      out += `
+        <li>
+          <button type="button" class="exam-option-btn" data-index="${num}">
+            <span class="exam-opt-num">${["①", "②", "③", "④"][optIdx] || num}</span>
+            <span>${esc(opt)}</span>
+          </button>
+        </li>
+      `;
+    });
+
+    out += `
+      </ul>
+      <div class="exam-explanation-box" hidden>
+        <div class="exam-exp-title">
+          <span>💡 정답: ${item.answer}번</span>
+        </div>
+        <p style="margin:0;">${esc(item.explanation)}</p>
+      </div>
+    </div>
+    `;
+  });
+
+  out += `</section>\n`;
+  return out;
 }
 const readMin = (src) => Math.max(1, Math.round(src.replace(/\s/g, "").length / 450));
 const fmtDate = (d) => d.replace(/-/g, ".");
@@ -299,8 +382,10 @@ for (const p of all) {
     </div>
   </header>
   <div class="wrap narrow prose">
+    ${renderVisualCard(p)}
     ${p.cat.note ? `<p class="note">${esc(p.cat.note)}</p>` : ""}
     ${renderBody(p.body)}
+    ${renderExamSamples(p.slug)}
     <p class="disclaimer">시험 일정, 응시 자격, 합격 기준은 해마다 바뀔 수 있어요. 접수 전에 큐넷(Q-Net) 또는 시행기관의 공식 공고를 꼭 확인하세요.</p>
   </div>
 </article>

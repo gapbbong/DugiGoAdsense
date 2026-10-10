@@ -73,4 +73,33 @@
       if (e.key === "Escape" && !box.hidden) { box.hidden = true; searchBtn.focus(); }
     });
   }
+
+  // 인터랙티브 CBT 기출문제 정답 및 해설 토글 기능
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest(".exam-option-btn");
+    if (!btn) return;
+    var item = btn.closest(".exam-item");
+    if (!item) return;
+    
+    var correctIdx = parseInt(item.getAttribute("data-answer"), 10);
+    var choiceIdx = parseInt(btn.getAttribute("data-index"), 10);
+    var btns = item.querySelectorAll(".exam-option-btn");
+    var expBox = item.querySelector(".exam-explanation-box");
+
+    btns.forEach(function (b) {
+      b.classList.remove("correct", "wrong");
+      var idx = parseInt(b.getAttribute("data-index"), 10);
+      if (idx === correctIdx) {
+        b.classList.add("correct");
+      }
+    });
+
+    if (choiceIdx !== correctIdx) {
+      btn.classList.add("wrong");
+    }
+
+    if (expBox) {
+      expBox.hidden = false;
+    }
+  });
 })();
