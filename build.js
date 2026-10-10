@@ -448,7 +448,7 @@ for (const p of all) {
   </header>
   <div class="wrap narrow prose">
     ${renderVisualCard(p)}
-    ${p.cat.note ? `<p class="note">${esc(p.cat.note)}</p>` : ""}
+    ${(p.note || p.cat.note) ? `<p class="note">${esc(p.note || p.cat.note)}</p>` : ""}
     ${renderPostBody(p)}
     ${renderExamSamples(p.slug)}
     <p class="disclaimer">시험 일정, 응시 자격, 합격 기준은 해마다 바뀔 수 있어요. 접수 전에 큐넷(Q-Net) 또는 시행기관의 공식 공고를 꼭 확인하세요.</p>
