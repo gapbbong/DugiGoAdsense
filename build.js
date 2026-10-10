@@ -107,7 +107,7 @@ function renderExamSamples(slug) {
       <span class="exam-badge">CBT 실전 기출</span>
       <h2>핵심 대표 문항 &amp; 상세 해설 분석</h2>
     </div>
-    <p class="muted" style="margin: 0 0 18px; font-size: 14.5px;">실제 시험에 반복 출제되는 대표 유형입니다. 보기를 클릭하여 정답과 상세 해설을 바로 확인해보세요.</p>
+    <p class="muted" style="margin: 0 0 18px; font-size: 14.5px;">자주 나오는 유형을 바탕으로 새로 만든 예시 문항이에요. 실제 기출 문제와 똑같지는 않아요. 보기를 눌러 정답과 해설을 확인해보세요.</p>
   `;
 
   samples.forEach((item, qIdx) => {
