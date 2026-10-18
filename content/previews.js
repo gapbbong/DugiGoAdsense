@@ -1,5 +1,5 @@
 // 시험 미리보기 — 종목별 소개. 세부 일정/기준은 해마다 바뀔 수 있어 큐넷 공고 확인 안내를 포함
-module.exports = [
+const POSTS = [
 {
 slug: "preview-electric-technician",
 title: "전기기능사 필기 미리보기: 뭘 공부하고 어떻게 나올까",
@@ -440,3 +440,6 @@ KEC 파트는 외운 만큼 점수가 나온다. 전기응용 쪽도 개념이 �
 `
 }
 ];
+
+const MORE = require("./preview_more.js");
+module.exports = POSTS.map((p) => ({ ...p, body: p.body.trimEnd() + (MORE[p.slug] ? "\n" + MORE[p.slug] : "") }));
