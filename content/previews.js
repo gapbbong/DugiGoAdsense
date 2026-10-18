@@ -442,4 +442,5 @@ KEC 파트는 외운 만큼 점수가 나온다. 전기응용 쪽도 개념이 �
 ];
 
 const MORE = require("./preview_more.js");
-module.exports = POSTS.map((p) => ({ ...p, body: p.body.trimEnd() + (MORE[p.slug] ? "\n" + MORE[p.slug] : "") }));
+const MORE2 = require("./preview_more2.js");
+module.exports = POSTS.map((p) => ({ ...p, body: p.body.trimEnd() + (MORE[p.slug] ? "\n" + MORE[p.slug] : "") + (MORE2[p.slug] ? "\n" + MORE2[p.slug] : "") }));
