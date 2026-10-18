@@ -1,0 +1,48 @@
+// 짧은 글을 주제별로 묶어 하나의 긴 글로 합친다. from 의 글은 새 글의 소제목 아래로 들어가고, 옛 주소는 새 글로 이동한다.
+module.exports = {
+  stories: [
+    { slug: "elevator-student-reviews", from: ["elevator-craftsman-3weeks", "elevator-one-month-advice"],
+      title: "승강기기능사 합격 학생 후기 모음: 3주 준비와 한 달 준비",
+      desc: "승강기기능사에 합격한 두 학생이 직접 전한 공부 기간, 어려웠던 점, 후배에게 하는 말과 두기고 해설을 한곳에 모았어요.",
+      by: "실제 학생 후기 · 승강기기능사 합격",
+      note: "이 글은 실제 합격 학생이 직접 전한 후기입니다. 후기는 맞춤법과 문단만 다듬었고, 해설은 두기고 편집진이 덧붙였습니다. 공부 방법과 결과는 사람마다 다를 수 있습니다.",
+      intro: "승강기기능사에 합격한 학생 두 명이 직접 들려준 이야기를 한 글에 모았다. 한 명은 3주, 다른 한 명은 한 달을 준비했다. 준비 기간과 방식은 달랐지만 둘 다 조급해하지 않고 꾸준히 이어간 점이 닮았다." },
+    { slug: "electric-study-diaries", from: ["electric-tech-2weeks", "electric-practical-retry", "electric-engineer-college"],
+      title: "전기 자격증 도전기 모음: 기능사 벼락치기부터 기사 재도전까지",
+      desc: "전기기능사 필기 2주 준비, 실기 불합격 뒤 재도전, 전기기사 필기 과락 뒤 재도전까지 세 가지 가상 학습 사례를 모았어요.",
+      by: "가상 사례 · 전기 자격증 도전",
+      intro: "전기 분야 자격증은 단계가 이어져 있어서 한 번의 경험이 다음 시험의 밑거름이 된다. 아래 세 가지 가상 사례는 기능사 필기, 기능사 실기, 기사 필기에서 학생들이 겪을 만한 일을 이야기로 풀었다." },
+    { slug: "it-office-study-diaries", from: ["infoprocess-first-try", "computer-skills-2-one-week", "korean-history-grade-up"],
+      title: "정보처리·컴활·한국사 도전기 모음: 처음 보는 시험에서 배운 것",
+      desc: "정보처리기능사 첫 도전, 컴활 2급 엑셀 과락 뒤 재도전, 한국사능력검정 급수를 올린 과정을 가상 사례로 정리했어요.",
+      by: "가상 사례 · IT·사무·한국사 도전",
+      intro: "IT, 사무, 한국사처럼 학교 밖에서도 쓰임이 많은 시험의 도전기를 모았다. 모두 가상의 학습 사례이며, 시험 구성과 공부 방법은 실제 시험에 맞춰 썼다." },
+    { slug: "elevator-plc-study-diaries", from: ["elevator-written-pass", "plc-was-hard"],
+      title: "승강기·자동화설비 도전기 모음: 현장 기술 자격증 공부 노트",
+      desc: "승강기기능사를 시작하게 된 계기와 자동화설비기능사 PLC 용어를 내 말로 정리한 노트를 가상 사례로 모았어요.",
+      by: "가상 사례 · 현장 기술 자격증 도전",
+      intro: "현장 기술 자격증은 용어가 낯설어 시작이 어렵다. 이 글의 두 가상 사례는 계기를 만드는 법과 용어를 내 말로 바꾸는 법을 다룬다." },
+    { slug: "study-habit-diaries", from: ["slump-two-weeks-before", "wrong-note-saved-me", "three-certificates-timetable"],
+      title: "공부 습관 이야기 모음: 슬럼프, 오답노트, 한 해 시간표",
+      desc: "시험 2주 전 폰만 보던 날들, 오답노트를 쓰기 시작한 이유, 1년에 자격증 3개에 도전한 시간표를 가상 사례로 모았어요.",
+      by: "가상 사례 · 공부 습관",
+      intro: "자격증 공부가 막히는 이유는 실력보다 습관일 때가 많다. 슬럼프, 오답노트, 시간표 세 가지 주제를 가상 사례로 풀어봤다." }
+  ],
+  tips: [
+    { slug: "study-method-guide", from: ["why-past-exams-first", "study-with-explanations", "memorize-tricks"],
+      title: "자격증 공부법 가이드: 기출, 해설, 암기를 제대로 쓰는 법",
+      desc: "기출부터 푸는 이유, 해설을 읽는 방법, 암기 요령 6가지를 한 글로 묶었어요.",
+      by: "두기고 편집부",
+      intro: "자격증 공부는 무엇을 하느냐보다 어떻게 하느냐에서 차이가 난다. 기출문제, 해설, 암기라는 세 가지 핵심 방법을 순서대로 정리했다." },
+    { slug: "study-plan-guide", from: ["daily-30-minutes", "which-certificate-first", "phone-away-focus"],
+      title: "자격증 계획 세우기: 무엇부터, 하루 얼마나, 집중은 어떻게",
+      desc: "진로별 자격증 순서, 하루 30분 계획, 폰 때문에 집중이 안 될 때의 환경 만들기를 한 글로 묶었어요.",
+      by: "두기고 편집부",
+      intro: "공부를 시작하기 전에 정해야 할 것은 종목, 시간, 환경이다. 세 가지를 차례로 정하면 중간에 흔들릴 일이 줄어든다." },
+    { slug: "exam-strategy-guide", from: ["first-cbt-guide", "calculation-skip-rule", "day-before-exam", "exam-day-checklist"],
+      title: "시험 전략 가이드: CBT 첫 응시, 계산 문제, 전날과 당일 체크",
+      desc: "CBT 시험 처음이라면 알아둘 것, 계산 문제 포기 기준, 시험 전날과 당일 체크리스트를 한 글로 묶었어요.",
+      by: "두기고 편집부",
+      intro: "시험은 실력만큼 운영도 중요하다. 시험 방식에 익숙해지고, 계산 문제를 다루는 기준을 정하고, 전날과 당일에 할 일을 정리해 두자." }
+  ]
+};

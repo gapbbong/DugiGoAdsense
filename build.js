@@ -59,7 +59,9 @@ function renderBody(src) {
     const lines = b.split("\n").map((l) => l.trim()).filter(Boolean);
     if (!lines.length) continue;
 
-    if (lines.length === 1 && lines[0].startsWith("## ")) {
+    if (lines.length === 1 && lines[0].startsWith("### ")) {
+      html += `<h3>${esc(lines[0].slice(4))}</h3>\n`;
+    } else if (lines.length === 1 && lines[0].startsWith("## ")) {
       html += `<h2>${esc(lines[0].slice(3))}</h2>\n`;
     } else if (lines.every((l) => l.startsWith("- "))) {
       html += "<ul>" + lines.map((l) => `<li>${esc(l.slice(2))}</li>`).join("") + "</ul>\n";
@@ -227,9 +229,20 @@ function withExtra(p) {
   return [...blocks, ...adds.map((a) => a.trim()), last].join("\n\n");
 }
 
+const MERGES = require("./content/merges.js");
+const REDIRECTS = []; // [옛 slug, 새 slug]
 const all = [];
 for (const c of CATS) {
-  for (const p of c.posts) all.push({ ...p, body: withExtra(p), cat: c, url: `/posts/${p.slug}.html` });
+  const groups = MERGES[c.slug] || [];
+  const used = new Set(groups.flatMap((g) => g.from));
+  for (const p of c.posts) if (!used.has(p.slug)) all.push({ ...p, body: withExtra(p), cat: c, url: `/posts/${p.slug}.html` });
+  for (const g of groups) {
+    const srcs = g.from.map((s) => { const p = c.posts.find((x) => x.slug === s); if (!p) throw new Error("합칠 글 없음: " + s); return p; });
+    const parts = srcs.map((p) => "## " + p.title + "\n\n" + withExtra(p).trim().replace(/^## /gm, "### "));
+    const last = g.outro || "각 글의 내용은 사람마다, 시험마다 다르게 적용될 수 있어요. 자신의 일정과 약점에 맞게 필요한 부분만 골라 쓰면 됩니다.";
+    all.push({ slug: g.slug, title: g.title, desc: g.desc, by: g.by, note: g.note, date: srcs.map((p) => p.date).sort().pop(), body: g.intro + "\n\n" + parts.join("\n\n") + "\n\n" + last, cat: c, url: `/posts/${g.slug}.html` });
+    g.from.forEach((s) => REDIRECTS.push([s, g.slug]));
+  }
 }
 // 발행일: 하루에 한 편씩, 마지막 글이 SITE.updated(오늘)가 되도록 거꾸로 배정
 all.sort((a, b) => a.date.localeCompare(b.date) || a.slug.localeCompare(b.slug));
@@ -392,9 +405,9 @@ fs.cpSync(path.join(__dirname, "assets"), path.join(OUT, "assets"), { recursive:
   <div class="callout">
     <h2>처음이라면 이 순서로 읽어보세요</h2>
     <ol>
-      <li><a href="/posts/why-past-exams-first.html">자격증은 왜 기출부터 풀어야 할까</a></li>
-      <li><a href="/posts/which-certificate-first.html">자격증 뭐부터 따야 할까: 진로별 추천 순서</a></li>
-      <li><a href="/posts/first-cbt-guide.html">CBT 시험 처음이라면 알아둘 것</a></li>
+      <li><a href="/posts/study-method-guide.html">자격증은 왜 기출부터 풀어야 할까</a></li>
+      <li><a href="/posts/study-plan-guide.html">자격증 뭐부터 따야 할까: 진로별 추천 순서</a></li>
+      <li><a href="/posts/exam-strategy-guide.html">CBT 시험 처음이라면 알아둘 것</a></li>
     </ol>
   </div>
 </section>`;
@@ -568,6 +581,9 @@ write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="htt
     return `<url><loc>${SITE.url}${u}</loc><lastmod>${post ? post.date : SITE.updated}</lastmod></url>`;
   })
   .join("\n")}\n</urlset>\n`);
+for (const [from, to] of REDIRECTS) {
+  write(`posts/${from}.html`, `<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>이동 중</title><meta name="robots" content="noindex"><link rel="canonical" href="${SITE.url}/posts/${to}.html"><meta http-equiv="refresh" content="0; url=/posts/${to}.html"></head><body><p><a href="/posts/${to}.html">글이 이동했어요</a></p></body></html>`);
+}
 write("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${SITE.url}/sitemap.xml\n`);
 if (SITE.adsenseClient) write("ads.txt", `google.com, ${SITE.adsenseClient.replace("ca-", "")}, DIRECT, f08c47fec0942fa0\n`);
 
