@@ -6,7 +6,7 @@ const SITE = {
   name: "두기고",
   tagline: "자격증, 같이 붙자",
   // 실제 도메인이 정해지면 SITE_URL 환경변수로 넣으세요. 예) SITE_URL=https://dugigo.example node build.js
-  url: (process.env.SITE_URL || "https://www.creat1324.com").replace(/\/$/, ""),
+  url: (process.env.SITE_URL || "https://edserv1.com").replace(/\/$/, ""),
   email: process.env.SITE_EMAIL || "gapbbong@gmail.com",
   adsenseClient: process.env.ADSENSE_CLIENT || "ca-pub-4428080843496647", // 사이트 소유 확인과 ads.txt에 쓰인다
   appUrl: process.env.APP_URL || "", // 두기고 문제풀이 앱 주소가 있으면 입력
@@ -42,7 +42,7 @@ const CATS = [
     color: "#10b981",
     desc: "기출 푸는 법, 암기법, 시험 당일 체크리스트까지. 바로 써먹는 공부 방법.",
     note: "",
-    posts: require("./content/tips.js"),
+    posts: require("./content/tips.js").concat(require("./content/plc_guides.js")),
   },
 ];
 
