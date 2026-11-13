@@ -42,7 +42,7 @@ const CATS = [
     color: "#10b981",
     desc: "기출 푸는 법, 암기법, 시험 당일 체크리스트까지. 바로 써먹는 공부 방법.",
     note: "",
-    posts: require("./content/tips.js").concat(require("./content/plc_guides.js"), require("./content/elevator_guides.js"), require("./content/deep_guides.js")),
+    posts: require("./content/expand.js")(require("./content/tips.js").concat(require("./content/plc_guides.js"), require("./content/elevator_guides.js"), require("./content/deep_guides.js"))),
   },
 ];
 
