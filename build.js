@@ -10,7 +10,7 @@ const SITE = {
   email: process.env.SITE_EMAIL || "gapbbong@gmail.com",
   adsenseClient: process.env.ADSENSE_CLIENT || "ca-pub-4428080843496647", // 사이트 소유 확인과 ads.txt에 쓰인다
   appUrl: process.env.APP_URL || "", // 두기고 문제풀이 앱 주소가 있으면 입력
-  updated: "2026-10-08",
+  updated: "2026-11-13",
 };
 
 const CATS = [
@@ -42,7 +42,7 @@ const CATS = [
     color: "#10b981",
     desc: "기출 푸는 법, 암기법, 시험 당일 체크리스트까지. 바로 써먹는 공부 방법.",
     note: "",
-    posts: require("./content/tips.js").concat(require("./content/plc_guides.js"), require("./content/elevator_guides.js")),
+    posts: require("./content/tips.js").concat(require("./content/plc_guides.js"), require("./content/elevator_guides.js"), require("./content/deep_guides.js")),
   },
 ];
 
@@ -498,6 +498,8 @@ simple("about.html", "두기고 소개", "두기고가 어떤 사이트이고, �
 </ul>
 <h2>다루는 종목</h2>
 <p>전기기능사, 전기기사, 전기공사산업기사, 승강기기능사, 정보처리기능사, 정보처리산업기사, 컴퓨터활용능력 2급, 한국사능력검정시험, 자동화설비(생산자동화)기능사, 자동화설비산업기사, 시각디자인산업기사, 3D프린터운용기능사 등 학생들이 많이 준비하는 시험을 다뤄요.</p>
+<h2>누가 만드나요</h2>
+<p>두기고는 특성화고에서 전기·전자와 자동화 분야를 가르치는 교사가 학생들이 자주 묻는 질문을 모아 정리하는 사이트예요. 수업과 실습에서 학생들이 막히는 지점을 직접 보고, 그 지점을 풀어 쓰는 데 초점을 둬요. 글은 큐넷, 한국승강기안전공단 같은 공식 자료를 확인한 뒤 새로 정리하고, 바뀔 수 있는 숫자는 확인한 날짜와 함께 적거나 공식 공고를 보라고 안내해요.</p>
 <h2>글 쓰는 원칙</h2>
 <ul>
 <li>어려운 말은 쉽게 풀어서 써요.</li>
