@@ -588,5 +588,6 @@ for (const [from, to] of REDIRECTS) {
 }
 write("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${SITE.url}/sitemap.xml\n`);
 if (SITE.adsenseClient) write("ads.txt", `google.com, ${SITE.adsenseClient.replace("ca-", "")}, DIRECT, f08c47fec0942fa0\n`);
+write("google8ded76e2faf7dede.html", "google-site-verification: google8ded76e2faf7dede.html");
 
 console.log(`빌드 완료: 글 ${all.length}편, 페이지 ${urls.length + 1}개 → public/`);
