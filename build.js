@@ -59,6 +59,11 @@ function renderBody(src) {
     const lines = b.split("\n").map((l) => l.trim()).filter(Boolean);
     if (!lines.length) continue;
 
+    if (lines.length === 1 && lines[0].startsWith("[[fig:")) {
+      const m = lines[0].match(/^\[\[fig:([\w-]+)\|(.*)\]\]$/);
+      const FX = require("./content/figs_extra.js");
+      if (m && FX[m[1]]) { html += `<figure class="fig">${FX[m[1]]}<figcaption>${esc(m[2])}</figcaption></figure>\n`; continue; }
+    }
     if (lines.length === 1 && lines[0].startsWith("### ")) {
       html += `<h3>${esc(lines[0].slice(4))}</h3>\n`;
     } else if (lines.length === 1 && lines[0].startsWith("## ")) {
